@@ -1,6 +1,6 @@
 <?php
 require 'stripe/init.php';
-\Stripe\Stripe::setApiKey('sk_test_your_secret_key'); // Replace with your secret key
+\Stripe\Stripe::setApiKey('sk_test_51R9A5bIWhwa8vApyqkB5XTfpSiWOoEnF5HxX8O5qMMGfCCJHKUNV2KFku8o7qIlj3OGoWAzHqtr6La3wyK1cm2WV005OKrM6Ae'); // Replace with your secret key
 
 $session = \Stripe\Checkout\Session::create([
     'payment_method_types' => ['card'],
