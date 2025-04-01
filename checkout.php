@@ -29,6 +29,18 @@ $session = \Stripe\Checkout\Session::create([
 
 </head>
 <body>
+    <nav>
+    <div class="logo">Sec-Reads</div>
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="cart.php">Cart</a>
+        <a href="login.php">Login</a>
+        <a href="register.php">Register</a>
+    </div>
+</nav>
+<main>
+    <p>Redirecting to secure payment...</p>
+</main>
 <script>
     var stripe = Stripe('pk_test_51R9A5bIWhwa8vApyImX2oJ6CrawhVSJz4wxv29pTUNBQf2afydQLpOtzXio5HEPiRcPcwq6ikTD6XKzLgT6ei9Sp00ttu2ghBq'); // Replace with your publishable key
     stripe.redirectToCheckout({ sessionId: "<?= $session->id ?>" });
