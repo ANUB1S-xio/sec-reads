@@ -5,6 +5,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $book = $_POST['book'] ?? null;
     if ($book) $_SESSION['cart'][] = $book;
 }
+
+$categories = [
+    'Cryptography',
+    'Ethical Hacking',
+    'Cloud Security',
+    'Malware Analysis',
+    'Red Teaming',
+    'Cyber Laws',
+    'Computer Forensics',
+    'Software Engineering'
+];
+
+// ✅ Your actual Google Books API key
+$apiKey = 'AIzaSyBX1edPcWsv8ed-x4gpmcLXlQ-0l4EDqNE';
+
+function fetchBooks($subject, $apiKey = '') {
+    $encoded = urlencode($subject);
+    $url = "https://www.googleapis.com/books/v1/volumes?q=subject:$encoded&maxResults=6&key=$apiKey";
+
+    $response = @file_get_contents($url);
+    if (!$response) return [];
+
+    $json = json_decode($response, true);
+    return $json['items'] ?? [];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,25 +51,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </nav>
 
 <main>
-    <h1>Welcome to Sec-Reads</h1>
-    <p>Digital cybersecurity book collection</p>
-    <div class="book-grid">
-        <form method="POST" class="book-card">
-            <h3>Web Application Hacker’s Handbook</h3>
-            <input type="hidden" name="book" value="Web Application Hacker’s Handbook">
-            <button type="submit">Add to Cart</button>
-        </form>
-        <form method="POST" class="book-card">
-            <h3>Black Hat Python</h3>
-            <input type="hidden" name="book" value="Black Hat Python">
-            <button type="submit">Add to Cart</button>
-        </form>
-        <form method="POST" class="book-card">
-            <h3>Practical Malware Analysis</h3>
-            <input type="hidden" name="book" value="Practical Malware Analysis">
-            <button type="submit">Add to Cart</button>
-        </form>
-    </div>
+    <h1>Explore Cybersecurity Books by Category</h1>
+
+    <?php foreach ($categories as $category): ?>
+        <h2><?= htmlspecialchars($category) ?></h2>
+        <div class="book-grid">
+            <?php
+            $books = fetchBooks($category, $apiKey);
+            foreach ($books as $book):
+                $info = $book['volumeInfo'];
+                $title = $info['title'] ?? 'Untitled';
+                $desc = $info['description'] ?? 'No description.';
+                $img = $info['imageLinks']['thumbnail'] ?? 'https://via.placeholder.com/128x195?text=No+Image';
+                $rating = $info['averageRating'] ?? 'N/A';
+                $price = $book['saleInfo']['listPrice']['amount'] ?? null;
+                $currency = $book['saleInfo']['listPrice']['currencyCode'] ?? '';
+                $link = $info['infoLink'] ?? '#';
+            ?>
+                <div class="book-card">
+                    <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($title) ?>" style="width:100%; border-radius:6px;">
+                    <h3><?= htmlspecialchars($title) ?></h3>
+                    <p>⭐ Rating: <?= $rating ?></p>
+                    <?php if ($price): ?>
+                        <p><strong>Price:</strong> <?= $currency ?><?= $price ?></p>
+                    <?php endif; ?>
+                    <p><?= htmlspecialchars(substr($desc, 0, 120)) ?>...</p>
+                    <a href="<?= htmlspecialchars($link) ?>" target="_blank">
+                        <button>View Book</button>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
 </main>
 </body>
 </html>
