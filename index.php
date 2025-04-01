@@ -16,13 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <nav>
-    <div class="logo">Sec-Reads</div>
+    <div class="logo">NexusReads</div>
     <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="cart.php">Cart</a>
         <a href="login.php">Login</a>
         <a href="register.php">Register</a>
-        <a href="cart.php">Cart</a>
     </div>
 </nav>
+
 <main>
     <h1>Welcome to Sec-Reads</h1>
     <p>Digital cybersecurity book collection</p>
