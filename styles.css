@@ -27,15 +27,6 @@ nav {
     position: relative;
 }
 
-.logo::before {
-    content: "🧬";
-    position: absolute;
-    left: -2rem;
-    color: #00ffff;
-    font-size: 1.6rem;
-    animation: pulse 2s infinite;
-}
-
 .nav-links a {
     margin-left: 1.5rem;
     color: #c1d1ff;
