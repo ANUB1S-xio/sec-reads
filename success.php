@@ -12,8 +12,12 @@
     <div class="logo">Sec-Reads</div>
     <div class="nav-links">
         <a href="index.php">Home</a>
+        <a href="cart.php">Cart</a>
+        <a href="login.php">Login</a>
+        <a href="register.php">Register</a>
     </div>
 </nav>
+
 <main>
     <h2>Payment Successful</h2>
     <p>Thank you for your order.</p>
