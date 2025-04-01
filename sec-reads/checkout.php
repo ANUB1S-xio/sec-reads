@@ -27,7 +27,7 @@ $session = \Stripe\Checkout\Session::create([
 </head>
 <body>
 <script>
-    var stripe = Stripe('pk_test_your_publishable_key'); // Replace with your publishable key
+    var stripe = Stripe('pk_test_51R9A5bIWhwa8vApyImX2oJ6CrawhVSJz4wxv29pTUNBQf2afydQLpOtzXio5HEPiRcPcwq6ikTD6XKzLgT6ei9Sp00ttu2ghBq'); // Replace with your publishable key
     stripe.redirectToCheckout({ sessionId: "<?= $session->id ?>" });
 </script>
 </body>
