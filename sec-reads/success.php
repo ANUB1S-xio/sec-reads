@@ -4,6 +4,7 @@
     <title>Payment Success - Sec-Reads</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+    
 <body>
 <nav>
     <div class="logo">Sec-Reads</div>
