@@ -1,13 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $book = $_POST['book'] ?? null;
-    if ($book) $_SESSION['cart'][] = $book;
-}
-
-$cart = $_SESSION['cart'];
+$cart = $_SESSION['cart'] ?? [];
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +10,7 @@ $cart = $_SESSION['cart'];
 </head>
 <body>
 <nav>
-    <div class="logo">📚 Sec-Reads</div>
+    <div class="logo">Sec-Reads</div>
     <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="checkout.php">Checkout</a>
