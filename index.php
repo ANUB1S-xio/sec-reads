@@ -17,7 +17,6 @@ $categories = [
     'Software Engineering'
 ];
 
-// ✅ Your actual Google Books API key
 $apiKey = 'AIzaSyBX1edPcWsv8ed-x4gpmcLXlQ-0l4EDqNE';
 
 function fetchBooks($subject, $apiKey = '') {
@@ -71,7 +70,7 @@ function fetchBooks($subject, $apiKey = '') {
                 <div class="book-card">
                     <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($title) ?>" style="width:100%; border-radius:6px;">
                     <h3><?= htmlspecialchars($title) ?></h3>
-                    <p>⭐ Rating: <?= $rating ?></p>
+                    <p>Rating: <?= $rating ?></p>
                     <?php if ($price): ?>
                         <p><strong>Price:</strong> <?= $currency ?><?= $price ?></p>
                     <?php endif; ?>
