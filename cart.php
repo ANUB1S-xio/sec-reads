@@ -12,7 +12,7 @@ $cart = $_SESSION['cart'] ?? [];
 </head>
 <body>
 <nav>
-    <div class="logo">NexusReads</div>
+    <div class="logo">Sec-Reads</div>
     <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="cart.php">Cart</a>
