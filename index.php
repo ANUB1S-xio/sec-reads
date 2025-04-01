@@ -11,10 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Sec-Reads Cyber Bookstore</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <nav>
