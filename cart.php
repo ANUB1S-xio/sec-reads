@@ -7,6 +7,9 @@ $cart = $_SESSION['cart'] ?? [];
 <head>
     <title>Your Cart - Sec-Reads</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 <nav>
