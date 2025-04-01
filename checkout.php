@@ -24,6 +24,9 @@ $session = \Stripe\Checkout\Session::create([
 <head>
     <title>Checkout - Sec-Reads</title>
     <script src="https://js.stripe.com/v3/"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 <script>
