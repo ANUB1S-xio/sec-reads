@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+if (empty($_SESSION['cart'])) {
+    header("Location: cart.php");
     exit;
 }
 ?>
@@ -16,11 +16,10 @@ if (!isset($_SESSION['user_id'])) {
 <nav>
     <a href="index.php">Home</a>
     <a href="cart.php">Cart</a>
-    <a href="logout.php">Logout</a>
 </nav>
 <main>
     <h1>Checkout</h1>
-    <p>You will be charged $0.01 for the test item.</p>
+    <p>Total: $0.01</p>
     <form action="charge.php" method="POST">
         <button type="submit">Pay with Stripe</button>
     </form>
