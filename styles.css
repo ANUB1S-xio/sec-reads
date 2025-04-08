@@ -7,13 +7,13 @@ body {
 }
 
 nav {
-    background: #0f0f0f;
+    background: linear-gradient(to right, #0f0f0f, #1a1a1a);
     color: #00ffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
 }
 
 .logo {
@@ -32,7 +32,7 @@ nav {
 
 main {
     padding: 40px;
-    background-color: #f4f4f4;
+    background: #f2f5f9;
 }
 
 h1, h2 {
@@ -47,33 +47,45 @@ h1, h2 {
 }
 
 .book-card {
-    background: #ffffff;
-    border: 2px solid #00e6ac;
-    border-radius: 12px;
+    background: linear-gradient(145deg, #ffffff, #e3faff);
+    border: 1px solid #00e6ac;
+    border-radius: 16px;
     padding: 20px;
     max-width: 240px;
-    box-shadow: 0 0 10px rgba(0, 230, 172, 0.2);
+    box-shadow: 0 4px 14px rgba(0, 255, 255, 0.15);
     text-align: center;
 }
 
 .book-card img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-bottom: 10px;
 }
 
 button {
     background: linear-gradient(to right, #00e6ac, #00ffff);
     color: #000;
-    padding: 10px 16px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
     margin-top: 10px;
+    text-transform: uppercase;
 }
 
 button:hover {
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+}
+
+.added-message {
+    background: linear-gradient(to right, #c7f9cc, #d9fff3);
+    border-left: 5px solid #00e6ac;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #044d3c;
 }
