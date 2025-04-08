@@ -1,4 +1,14 @@
-<?php session_start(); $cart = $_SESSION['cart'] ?? []; ?>
+<?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear'])) {
+    $_SESSION['cart'] = [];
+    header("Location: cart.php");
+    exit;
+}
+
+$cart = $_SESSION['cart'] ?? [];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +36,12 @@
                 <li><?= htmlspecialchars($item) ?> — $0.01</li>
             <?php endforeach; ?>
         </ul>
-        <form action="checkout.php" method="POST">
+        <form action="checkout.php" method="POST" style="margin-top: 20px;">
             <button type="submit">Proceed to Checkout</button>
+        </form>
+        <form action="cart.php" method="POST" style="margin-top: 10px;">
+            <input type="hidden" name="clear" value="1">
+            <button type="submit" style="background: #ff5e5e; color: white;">Clear Cart</button>
         </form>
     <?php endif; ?>
 </main>
