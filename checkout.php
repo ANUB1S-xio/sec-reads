@@ -1,10 +1,4 @@
-<?php
-session_start();
-if (empty($_SESSION['cart'])) {
-    header("Location: cart.php");
-    exit;
-}
-?>
+<?php session_start(); if (empty($_SESSION['cart'])) { header("Location: cart.php"); exit; } ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +8,13 @@ if (empty($_SESSION['cart'])) {
 </head>
 <body>
 <nav>
-    <a href="index.php">Home</a>
-    <a href="cart.php">Cart</a>
+    <div class="logo">Sec-Reads</div>
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="cart.php">Cart</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
 </nav>
 <main>
     <h1>Checkout</h1>
