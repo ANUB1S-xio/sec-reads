@@ -85,7 +85,11 @@ function fetchBooks($subject, $apiKey) {
                     $info = $bookItem['volumeInfo'];
                     $title = $info['title'] ?? 'Untitled';
                     $desc = $info['description'] ?? '';
-                    $img = $info['imageLinks']['thumbnail'] ?? 'https://via.placeholder.com/128x195?text=No+Image';
+                    $img = $info['imageLinks']['small'] ??
+                           $info['imageLinks']['medium'] ??
+                           $info['imageLinks']['large'] ??
+                           $info['imageLinks']['thumbnail'] ??
+                           'https://via.placeholder.com/128x195?text=No+Image';
                     $link = $info['infoLink'] ?? '#';
                     $rating = $info['averageRating'] ?? 'N/A';
                 ?>
