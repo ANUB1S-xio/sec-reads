@@ -3,9 +3,20 @@ session_start();
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
+
+$addedMessage = null;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $book = $_POST['book'] ?? null;
-    if ($book) $_SESSION['cart'][] = $book;
+    if ($book) {
+        $_SESSION['cart'][] = $book;
+        header("Location: index.php?added=" . urlencode($book));
+        exit;
+    }
+}
+
+if (isset($_GET['added'])) {
+    $addedMessage = htmlspecialchars($_GET['added']) . ' added to cart.';
 }
 
 $apiKey = 'AIzaSyBX1edPcWsv8ed-x4gpmcLXlQ-0l4EDqNE';
@@ -49,6 +60,10 @@ function fetchBooks($subject, $apiKey) {
 </nav>
 
 <main>
+    <?php if ($addedMessage): ?>
+        <div class="added-message"><?= $addedMessage ?></div>
+    <?php endif; ?>
+
     <h1>Explore Cybersecurity Books</h1>
 
     <form method="POST" class="book-card">
