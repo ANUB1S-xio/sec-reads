@@ -19,11 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<nav>
+    <a href="index.php">Home</a>
+    <a href="cart.php">Cart</a>
+    <a href="login.php">Login</a>
+    <a href="register.php">Register</a>
+</nav>
+<main>
 <form method="POST">
     <h2>Register</h2>
     <input name="email" type="email" required placeholder="Email"><br>
     <input name="password" type="password" required placeholder="Password"><br>
     <button type="submit">Sign Up</button>
 </form>
+</main>
 </body>
 </html>
+
