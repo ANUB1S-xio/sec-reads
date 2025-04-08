@@ -1,7 +1,4 @@
-<?php
-session_start();
-$cart = $_SESSION['cart'] ?? [];
-?>
+<?php session_start(); $cart = $_SESSION['cart'] ?? []; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +8,13 @@ $cart = $_SESSION['cart'] ?? [];
 </head>
 <body>
 <nav>
-    <a href="index.php">Home</a>
-    <a href="cart.php">Cart</a>
+    <div class="logo">Sec-Reads</div>
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="cart.php">Cart</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
 </nav>
 <main>
     <h1>Your Cart</h1>
