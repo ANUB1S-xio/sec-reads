@@ -1,4 +1,10 @@
-<?php session_start(); if (empty($_SESSION['cart'])) { header("Location: cart.php"); exit; } ?>
+<?php
+session_start();
+if (empty($_SESSION['cart'])) {
+    header("Location: cart.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +23,13 @@
     </div>
 </nav>
 <main>
-    <h1>Checkout</h1>
-    <p>Total: $0.01</p>
-    <form action="charge.php" method="POST">
-        <button type="submit">Pay with Stripe</button>
-    </form>
+    <div class="content-box">
+        <h1>Checkout</h1>
+        <p>Total: $0.01</p>
+        <form action="charge.php" method="POST">
+            <button type="submit">Pay with Stripe</button>
+        </form>
+    </div>
 </main>
 </body>
 </html>
