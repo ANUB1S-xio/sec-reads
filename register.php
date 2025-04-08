@@ -1,29 +1,29 @@
+<?php
+require 'db.php';
+session_start();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $stmt = $pdo->prepare("INSERT INTO users (email, password_hash) VALUES (?, ?)");
+    $stmt->execute([$email, $pass]);
+    header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register - Sec-Reads</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Register</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav>
-    <div class="logo">Sec-Reads</div>
-    <div class="nav-links">
-        <a href="index.php">Home</a>
-        <a href="login.php">Login</a>
-    </div>
-</nav>
-<main>
-    <h2>Create an Account</h2>
-    <form method="post" class="auth-form">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Register</button>
-    </form>
-</main>
+<form method="POST">
+    <h2>Register</h2>
+    <input name="email" type="email" required placeholder="Email"><br>
+    <input name="password" type="password" required placeholder="Password"><br>
+    <button type="submit">Sign Up</button>
+</form>
 </body>
 </html>
