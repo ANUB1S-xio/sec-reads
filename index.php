@@ -20,14 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <nav>
     <a href="index.php">Home</a>
     <a href="cart.php">Cart</a>
-    <a href="login.php">Login</a>
-    <a href="register.php">Register</a>
 </nav>
 <main>
     <h1>Welcome to Sec-Reads</h1>
     <form method="POST">
-        <h3>The Cyber Dummy Guide - $0.01</h3>
-        <button type="submit">Add to Cart</button>
+        <div class="book-card">
+            <h3>The Cyber Dummy Guide - $0.01</h3>
+            <button type="submit">Add to Cart</button>
+        </div>
     </form>
 </main>
 </body>
