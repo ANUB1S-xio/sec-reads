@@ -1,11 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-}
+if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 
 $addedMessage = null;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $book = $_POST['book'] ?? null;
     if ($book) {
@@ -14,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
-
 if (isset($_GET['added'])) {
     $addedMessage = htmlspecialchars($_GET['added']) . ' added to cart.';
 }
@@ -99,4 +95,3 @@ function fetchBooks($subject, $apiKey) {
 </main>
 </body>
 </html>
-
