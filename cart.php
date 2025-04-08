@@ -13,7 +13,6 @@ $cart = $_SESSION['cart'] ?? [];
 <nav>
     <a href="index.php">Home</a>
     <a href="cart.php">Cart</a>
-    <a href="logout.php">Logout</a>
 </nav>
 <main>
     <h1>Your Cart</h1>
