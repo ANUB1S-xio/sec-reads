@@ -5,7 +5,7 @@ $_SESSION['cart'] = [];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Successful</title>
+    <title>Success</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
