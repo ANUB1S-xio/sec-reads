@@ -5,33 +5,26 @@ $cart = $_SESSION['cart'] ?? [];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Cart - Sec-Reads</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <title>Your Cart</title>
     <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
 <nav>
-    <div class="logo">Sec-Reads</div>
-    <div class="nav-links">
-        <a href="index.php">Home</a>
-        <a href="cart.php">Cart</a>
-        <a href="login.php">Login</a>
-        <a href="register.php">Register</a>
-    </div>
+    <a href="index.php">Home</a>
+    <a href="cart.php">Cart</a>
+    <a href="logout.php">Logout</a>
 </nav>
-
 <main>
-    <h2>Your Cart</h2>
+    <h1>Your Cart</h1>
     <?php if (empty($cart)): ?>
-        <p>Your cart is empty.</p>
+        <p>No items in cart.</p>
     <?php else: ?>
         <ul>
             <?php foreach ($cart as $item): ?>
-                <li><?= htmlspecialchars($item) ?></li>
+                <li><?= htmlspecialchars($item) ?> — $0.01</li>
             <?php endforeach; ?>
         </ul>
-        <form action="checkout.php" method="get">
+        <form action="checkout.php" method="POST">
             <button type="submit">Proceed to Checkout</button>
         </form>
     <?php endif; ?>
