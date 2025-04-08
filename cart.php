@@ -27,23 +27,25 @@ $cart = $_SESSION['cart'] ?? [];
     </div>
 </nav>
 <main>
-    <h1>Your Cart</h1>
-    <?php if (empty($cart)): ?>
-        <p>No items in cart.</p>
-    <?php else: ?>
-        <ul>
-            <?php foreach ($cart as $item): ?>
-                <li><?= htmlspecialchars($item) ?> — $0.01</li>
-            <?php endforeach; ?>
-        </ul>
-        <form action="checkout.php" method="POST" style="margin-top: 20px;">
-            <button type="submit">Proceed to Checkout</button>
-        </form>
-        <form action="cart.php" method="POST" style="margin-top: 10px;">
-            <input type="hidden" name="clear" value="1">
-            <button type="submit" style="background: #ff5e5e; color: white;">Clear Cart</button>
-        </form>
-    <?php endif; ?>
+    <div class="content-box">
+        <h1>Your Cart</h1>
+        <?php if (empty($cart)): ?>
+            <p>No items in cart.</p>
+        <?php else: ?>
+            <ul>
+                <?php foreach ($cart as $item): ?>
+                    <li><?= htmlspecialchars($item) ?> — $0.01</li>
+                <?php endforeach; ?>
+            </ul>
+            <form action="checkout.php" method="POST" style="margin-top: 20px;">
+                <button type="submit">Proceed to Checkout</button>
+            </form>
+            <form action="cart.php" method="POST" style="margin-top: 10px;">
+                <input type="hidden" name="clear" value="1">
+                <button type="submit" style="background: #ff5e5e; color: white;">Clear Cart</button>
+            </form>
+        <?php endif; ?>
+    </div>
 </main>
 </body>
 </html>
