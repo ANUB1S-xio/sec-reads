@@ -8,9 +8,7 @@ $session = \Stripe\Checkout\Session::create([
     'line_items' => [[
         'price_data' => [
             'currency' => 'usd',
-            'product_data' => [
-                'name' => 'The Cyber Dummy Guide'
-            ],
+            'product_data' => ['name' => 'The Cyber Dummy Guide'],
             'unit_amount' => 1
         ],
         'quantity' => 1
