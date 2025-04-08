@@ -18,19 +18,25 @@ if (isset($_GET['added'])) {
 $apiKey = 'AIzaSyBX1edPcWsv8ed-x4gpmcLXlQ-0l4EDqNE';
 
 $categories = [
+    'Cybersecurity',
+    'Network Security',
+    'Information Security',
+    'Computer Security',
     'Cryptography',
-    'Ethical Hacking',
+    'Digital Forensics',
+    'Penetration Testing',
+    'Hacking',
+    'Cyber Law',
+    'Cybercrime',
     'Cloud Security',
+    'Security Engineering',
     'Malware Analysis',
-    'Red Teaming',
-    'Cyber Laws',
-    'Computer Forensics',
-    'Software Engineering'
+    'Incident Response'
 ];
 
 function fetchBooks($subject, $apiKey) {
     $query = urlencode($subject);
-    $url = "https://www.googleapis.com/books/v1/volumes?q=subject:$query&maxResults=3&key=$apiKey";
+    $url = "https://www.googleapis.com/books/v1/volumes?q=" . $query . "&maxResults=4&key=$apiKey";
     $response = @file_get_contents($url);
     if (!$response) return [];
     $data = json_decode($response, true);
@@ -54,7 +60,6 @@ function fetchBooks($subject, $apiKey) {
         <a href="#">Contact</a>
     </div>
 </nav>
-
 <main>
     <?php if ($addedMessage): ?>
         <div class="added-message"><?= $addedMessage ?></div>
@@ -70,27 +75,32 @@ function fetchBooks($subject, $apiKey) {
     </form>
 
     <?php foreach ($categories as $category): ?>
-        <h2><?= htmlspecialchars($category) ?></h2>
-        <div class="book-grid">
-            <?php foreach (fetchBooks($category, $apiKey) as $bookItem):
-                $info = $bookItem['volumeInfo'];
-                $title = $info['title'] ?? 'Untitled';
-                $desc = $info['description'] ?? '';
-                $img = $info['imageLinks']['thumbnail'] ?? 'https://via.placeholder.com/128x195?text=No+Image';
-                $link = $info['infoLink'] ?? '#';
-                $rating = $info['averageRating'] ?? 'N/A';
-            ?>
-                <div class="book-card">
-                    <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($title) ?>">
-                    <h3><?= htmlspecialchars($title) ?></h3>
-                    <p>Rating: <?= $rating ?></p>
-                    <p><?= htmlspecialchars(substr($desc, 0, 100)) ?>...</p>
-                    <a href="<?= htmlspecialchars($link) ?>" target="_blank">
-                        <button type="button">View Book</button>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-        </div>
+        <?php
+        $books = fetchBooks($category, $apiKey);
+        if (!empty($books)):
+        ?>
+            <h2><?= htmlspecialchars($category) ?></h2>
+            <div class="book-grid">
+                <?php foreach ($books as $bookItem):
+                    $info = $bookItem['volumeInfo'];
+                    $title = $info['title'] ?? 'Untitled';
+                    $desc = $info['description'] ?? '';
+                    $img = $info['imageLinks']['thumbnail'] ?? 'https://via.placeholder.com/128x195?text=No+Image';
+                    $link = $info['infoLink'] ?? '#';
+                    $rating = $info['averageRating'] ?? 'N/A';
+                ?>
+                    <div class="book-card">
+                        <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($title) ?>">
+                        <h3><?= htmlspecialchars($title) ?></h3>
+                        <p>Rating: <?= $rating ?></p>
+                        <p><?= htmlspecialchars(substr($desc, 0, 100)) ?>...</p>
+                        <a href="<?= htmlspecialchars($link) ?>" target="_blank">
+                            <button type="button">View Book</button>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     <?php endforeach; ?>
 </main>
 </body>
